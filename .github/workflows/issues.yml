@@ -1,0 +1,14 @@
+name: Add a new GitHub issue to the specified project column
+on: [issues, pull_request]
+jobs:
+  add-new-issues-to-project-column:
+    runs-on: ubuntu-latest
+    steps:
+    - name: add-new-issues-to-organization-based-project-column
+      uses: docker://takanabe/github-actions-automate-projects:v0.0.1
+      if: github.event_name == 'issues' && github.event.action == 'opened'
+      env:
+        GITHUB_TOKEN: ${{ secrets.Ryan_Personal_For_Actions }}
+        GITHUB_PROJECT_URL: https://github.com/orgs/Misfit-Toys/projects/1
+        GITHUB_PROJECT_COLUMN_NAME: To Do
+© 2019 GitHub, Inc.
